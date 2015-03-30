@@ -99,14 +99,30 @@ module.exports = function(grunt) {
         }]
       }
     },
+    uncss: {
+       dist: {
+          files: {
+             'dist/css/style.css': 'src/index.html'
+          }
+       }
+    },
+    staticinline: {
+      main: {
+        files: {
+            'dist/index.html': 'src/index.html',
+        }
+      }
+    }
   });
 
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
+  grunt.loadNpmTasks('grunt-uncss');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-static-inline');
 
-  grunt.registerTask('default', ['clean','copy', 'htmlmin', 'uglify','imagemin','cssmin']);
+  grunt.registerTask('default', ['clean','copy', 'htmlmin', 'uglify','imagemin','uncss','cssmin','staticinline']);
 };
