@@ -30,7 +30,12 @@ module.exports = function(grunt) {
           collapseBooleanAttributes: true,
           removeAttributeQuotes: true,
           removeRedundantAttributes: true,
-          removeEmptyAttributes: true
+          removeEmptyAttributes: true,
+          removeComments: true,
+          collapseWhitespace: true,
+          removeScriptTypeAttributes: true,
+          removeStyleLinkTypeAttributes: true,
+          minifyCSS: true
         },
         files: [{
           expand: true,
@@ -93,7 +98,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'dist/css/',
-          src: ['**/*.css'],
+          src: ['style.min.css'],
           dest: 'dist/css/',
           ext: '.css'
         }]
@@ -102,7 +107,7 @@ module.exports = function(grunt) {
     uncss: {
        dist: {
           files: {
-             'dist/css/style.css': 'src/index.html'
+             'dist/css/style.min.css': 'src/index.html'
           }
        }
     },
@@ -110,6 +115,24 @@ module.exports = function(grunt) {
       main: {
         files: {
             'dist/index.html': 'src/index.html',
+        }
+      }
+    },
+    inlinecss: {
+        main: {
+            options: {
+            },
+            files: {
+                'dist/index.html': 'dist/index.html'
+            }
+        }
+    },
+    processhtml: {
+      options: {
+      },
+      dist: {
+        files: {
+          'dist/index.html': ['dist/index.html']
         }
       }
     }
@@ -123,6 +146,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-static-inline');
+  grunt.loadNpmTasks('grunt-inline-css');
+  grunt.loadNpmTasks('grunt-processhtml');
 
-  grunt.registerTask('default', ['clean','copy', 'htmlmin', 'uglify','imagemin','uncss','cssmin','staticinline']);
+  grunt.registerTask('default', ['clean','copy', 'uglify','imagemin','uncss','cssmin','processhtml','htmlmin']);
 };
