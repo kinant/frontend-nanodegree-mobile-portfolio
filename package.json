@@ -4,7 +4,8 @@
   "description": "Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).",
   "main": "index.js",
   "dependencies": {
-    "grunt": "^0.4.5"
+    "grunt": "^0.4.5",
+    "imagemin-jpegoptim": "^4.0.0"
   },
   "devDependencies": {
     "clean": "^4.0.1",
@@ -15,10 +16,9 @@
     "grunt-contrib-copy": "^0.8.0",
     "grunt-contrib-cssmin": "^0.12.2",
     "grunt-contrib-htmlmin": "^0.4.0",
-    "grunt-contrib-imagemin": "^0.9.3",
+    "grunt-contrib-imagemin": "^0.9.4",
     "grunt-contrib-uglify": "^0.8.0",
-    "grunt-usemin": "^3.0.0",
-    "imagemin-mozjpeg": "^4.0.0"
+    "grunt-usemin": "^3.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

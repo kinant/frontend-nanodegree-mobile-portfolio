@@ -3,6 +3,8 @@
 module.exports = function(grunt) {
 
   var mozjpeg = require('imagemin-mozjpeg');
+  var pngquant = require('imagemin-pngquant');
+  var jpegoptim = require('imagemin-jpegoptim');
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -64,17 +66,18 @@ module.exports = function(grunt) {
         },
         jpg: {
           options: {
-            progressive: true
+            fastcrush: true,
+            use: [pngquant()]
           },
           files: [
             {
               // Set to true to enable the following options…
               expand: true,
               // cwd is 'current working directory'
-              cwd: 'dist/img/',
+              cwd: 'dist/',
               src: ['**/*.jpg'],
               // Could also match cwd. i.e. project-directory/img/
-              dest: 'dist/img/',
+              dest: 'dist/',
               ext: '.jpg'
             }
           ]
