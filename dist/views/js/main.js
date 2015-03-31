@@ -452,14 +452,34 @@ var resizePizzas = function(size) {
   function changePizzaSizes(size) {
 
     var items = document.getElementsByClassName("randomPizzaContainer");
-    var length = items.length;
 
-    for (var i = 0; i < length; i++) {
+    var dx = determineDx(items[0], size);
+    var newwidth = (items[0].offsetWidth + dx) + 'px';
 
-      var dx = determineDx(items[i], size);
-      var newwidth = (items[i].offsetWidth + dx) + 'px';
-      items[i].style.width = newwidth;
+    function process(item){
+      item.style.width = newwidth;
     }
+
+    var iterations = Math.floor(items.length / 8);
+    var leftover = items.length % 8;
+    var i = 0;
+
+    if (leftover > 0){
+      do {
+        process(items[i++]);
+      } while (--leftover > 0);
+    }
+
+    do {
+      process(items[i++]);
+      process(items[i++]);
+      process(items[i++]);
+      process(items[i++]);
+      process(items[i++]);
+      process(items[i++]);
+      process(items[i++]);
+      process(items[i++]);
+    } while (--iterations > 0);
   }
 
   changePizzaSizes(size);
@@ -508,7 +528,6 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var items = document.getElementsByClassName("mover");
-  var length = items.length;
   var scrollTop = document.body.scrollTop / 1250
 
   var phases = [
@@ -519,16 +538,30 @@ function updatePositions() {
     Math.sin(scrollTop + 4) * 100
   ];
 
-  for (var i = length-1; i >= 0; i--) {
-    // var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-    // items[i].style.left = items[i].basicLeft + 100 * phases[i % 5] + 'px';
-    items[i].style.left = items[i].basicLeft + phases[i % 5] + 'px';
-    //console.log("phase: " + phases[i % 5]);
-    //console.log("scroll to top: " + (document.body.scrollTop / 1250));
-    //console.log("basic left: " + items[i].basicLeft);
-    //console.log("i: " + i);
-    //console.log("i%5: " + i % 5);
+  function process(item, i){
+    item.style.left = item.basicLeft + phases[i % 5] + 'px';
   }
+
+  var iterations = Math.floor(items.length / 8);
+  var leftover = items.length % 8;
+  var i = 0;
+
+  if (leftover > 0){
+    do {
+      process(items[i++], i);
+    } while (--leftover > 0);
+  }
+
+  do {
+    process(items[i++], i);
+    process(items[i++], i);
+    process(items[i++], i);
+    process(items[i++], i);
+    process(items[i++], i);
+    process(items[i++], i);
+    process(items[i++], i);
+    process(items[i++], i);
+  } while (--iterations > 0);
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
