@@ -39,8 +39,8 @@ module.exports = function(grunt) {
         },
         files: [{
           expand: true,
-          cwd: 'dist/',
-          src: 'index.html',
+          cwd: '',
+          src: ['src/index.html','src/views/pizza.html'],
           dest: 'dist/'
         }]
       }
@@ -49,6 +49,16 @@ module.exports = function(grunt) {
     uglify: {
       options: {
         mangle: false
+      },
+      part1: {
+        files: {
+          'dist/js/perfmatters.min.js': ['src/js/perfmatters.js']
+        }
+      },
+      part2: {
+        files: {
+          'dist/views/js/main.min.js': ['src/views/js/main.js']
+        }
       }
     },
     imagemin: {
@@ -97,9 +107,9 @@ module.exports = function(grunt) {
       target: {
         files: [{
           expand: true,
-          cwd: 'dist/css/',
-          src: ['style.min.css'],
-          dest: 'dist/css/',
+          cwd: 'dist/',
+          src: ['css/style.min.css','views/css/combined.min.css'],
+          dest: 'dist/',
           ext: '.css'
         }]
       }
@@ -109,23 +119,13 @@ module.exports = function(grunt) {
           files: {
              'dist/css/style.min.css': 'src/index.html'
           }
+       },
+       dist2: {
+          files: {
+             'dist/views/css/combined.min.css': 'src/views/pizza.html'
+          }
        }
-    },
-    staticinline: {
-      main: {
-        files: {
-            'dist/index.html': 'src/index.html',
-        }
-      }
-    },
-    inlinecss: {
-        main: {
-            options: {
-            },
-            files: {
-                'dist/index.html': 'dist/index.html'
-            }
-        }
+
     },
     processhtml: {
       options: {
@@ -133,6 +133,11 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'dist/index.html': ['dist/index.html']
+        }
+      },
+      dist2: {
+        files: {
+          'dist/views/pizza.html': ['dist/views/pizza.html']
         }
       }
     }
@@ -145,8 +150,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-uncss');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-static-inline');
-  grunt.loadNpmTasks('grunt-inline-css');
   grunt.loadNpmTasks('grunt-processhtml');
 
   grunt.registerTask('default', ['clean','copy', 'uglify','imagemin','uncss','cssmin','processhtml','htmlmin']);
