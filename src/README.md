@@ -4,6 +4,9 @@ Your challenge, if you wish to accept it (and we sure hope you will), is to opti
 
 ####Part 1: Optimize PageSpeed Insights score for index.html
 
+Instructions:
+- Click on "index.html" in the "dist" folder to open up the optimized website.
+
 Steps for optimizing PageSpeed Insights Score for index.html
 1. Optimization process was automated using Grunt and Plugins
 
@@ -38,6 +41,9 @@ General Resources used:
 ####Part 2: Optimize Frames per Second in pizza.html
 
 To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js.
+
+Instructions:
+- Click on "index.html" in the "dist" folder to open up the optimized website. Then, click on the last link that says: "Cam's Pizzeria" to open up the Pizzeria Website.
 
 ### Optimization Steps
 The steps are detailed in main.js. Basically unnecessary code was removed from the loops, and the loops where replaced with Duff’s Device patterns. More information about this patter is given in the main.js file. This was all from the book, "Even Faster Websites" by Steve Souders. Information in Pg. 97 of Chapter 7: Writing Efficient JavaScript.
