@@ -12,12 +12,13 @@ Steps for optimizing PageSpeed Insights Score for index.html
 
 2. Optimizing Render Blocking JS and CSS: this was done by minifying .js and .css files, combining them into combined files and by removing unused css. Then the css styles where inlined into index.html. Plug-ins used: 'grunt-contrib-uglify' (minify JS), 'grunt-contrib-uncss' (remove unused CSS), 'grunt-css-min' (minify css), 'grunt-processhtml' (inline css and change paths in html)
 
+Appart from this, asyncs were added for javascripts and a media="print", for the print.css file.
+
 3. Optimize Images: for this, I used 'grunt-contrib-imagemin'. The pizzeria.jpg JPEG file was optimized by resizing the image first, using Photoshop.
 
 4. Other tools used: 'grunt-contrib-html' (to minify html), 'grunt-contrib-clean' (clean the dist directory),'grunt-contrib-copy' (copy files into dist folder), 'grunt-processhtml' (automatically change js and css file paths)
 
-5. Optimized use of webfonts. To do this I used the javascript code from the fonts website:
-https://www.google.com/fonts#UsePlace:use/Collection:Open+Sans
+5. Optimized use of webfonts. Inlined the style for the font in the html file.
 
 Resources used for Grunt:
 1. Team Treehouse Courses: "Up and Running With Grunt". http://teamtreehouse.com/.

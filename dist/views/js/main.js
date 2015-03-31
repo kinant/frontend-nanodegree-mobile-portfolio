@@ -451,15 +451,41 @@ var resizePizzas = function(size) {
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
 
+    /* obtain all the pizza elements or items, using getElementsByClassName
+     * rather than using getSelectorAll, as read in:
+     * http://ryanmorr.com/abstract-away-the-performance-faults-of-queryselectorall/
+     */
     var items = document.getElementsByClassName("randomPizzaContainer");
 
+    // this part was moved out of the loop. It is only necessary that we calulate it once for all
+    // the elements, so we calculate it in this case from the first element
     var dx = determineDx(items[0], size);
     var newwidth = (items[0].offsetWidth + dx) + 'px';
 
+    /* Rather than use a for-loop, optimization is done by using a pattern
+     * known as Duff’s Device. This optimization comes from the book:
+     * "Even Faster Web Sites", by Steve Souders
+     * Pg. 97 of Chapter 7: Writing Efficient JavaScript
+     *
+     * Excerpt from the book:
+     * The idea behind Duff’s Device is that each trip through the loop does the work of
+     * between one and eight iterations of a normal loop. This is done by first determining
+     * the number of iterations by dividing the total number of array values by eight. Duff
+     * found that eight was an optimal number to use for this processing (it’s not arbitrary).
+     * Since not all array lengths will be equally divisible by eight, you must also calculate
+     * how many items won’t be processed by using the modulus operator. The startAt variable,
+     * therefore, contains the number of additional items to be processed. This variable
+     * is used only the first time through the loop, to do the extra work, and then is set back
+     * to zero so that each subsequent trip through the loop results in a full eight items being
+     * processed. Duff’s Device runs faster than a normal loop over a large number of iterations,
+     * but it can be made even faster.
+    */
     function process(item){
       item.style.width = newwidth;
     }
 
+    // calculate the numer of iterations and the amount left over
+    // initialize i
     var iterations = Math.floor(items.length / 8);
     var leftover = items.length % 8;
     var i = 0;
@@ -527,9 +553,21 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
+  /* obtain all the  items using getElementsByClassName,
+   * rather than using getSelectorAll, as read in:
+   * http://ryanmorr.com/abstract-away-the-performance-faults-of-queryselectorall/
+  */
   var items = document.getElementsByClassName("mover");
+
+  // scrollTop only needs to be calculated once. Removed from loop.
   var scrollTop = document.body.scrollTop / 1250
 
+  /* being a sine function, the phases will alternate between 5 possible values
+   * depending on what is added in the second part of the sine function.
+   * This part depends on what nth%5 element it is, which gives 5 possibilities.
+   * We can calculate them all at once, and do the multiplication by 100.
+   * This saves having to calculate a sine function each time.
+  */
   var phases = [
     Math.sin(scrollTop + 0) * 100,
     Math.sin(scrollTop + 1) * 100,
@@ -538,7 +576,13 @@ function updatePositions() {
     Math.sin(scrollTop + 4) * 100
   ];
 
+  /* Rather than use a for-loop, optimization is done by using a pattern
+   * known as Duff’s Device. This optimization comes from the book:
+   * "Even Faster Web Sites", by Steve Souders
+   * Pg. 97 of Chapter 7: Writing Efficient JavaScript
+  */
   function process(item, i){
+    // process the item and use the i%5 index for the phase portion
     item.style.left = item.basicLeft + phases[i % 5] + 'px';
   }
 
