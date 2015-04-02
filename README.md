@@ -20,24 +20,24 @@ Appart from this, asyncs were added for javascripts and a media="print", for the
 
 5. Optimized use of webfonts. Inlined the style for the font in the html file.
 
-Resources used for Grunt:
+Resources used for Grunt
 1. Team Treehouse Courses: "Up and Running With Grunt". http://teamtreehouse.com/.
 2. Book: "Mastering Grunt" by Daniel Li. Packt Publishing. 2014.
 3. Websites:
-	- https://github.com/gruntjs/grunt-contrib-uglify
-	- https://www.npmjs.com/package/grunt-processhtml
-	- https://github.com/addyosmani/grunt-uncss
-	- https://github.com/gruntjs/grunt-contrib-cssmin
-	- https://github.com/gruntjs/grunt-contrib-imagemin
-	- http://www.sitepoint.com/5-grunt-tasks-improve-performance-website/
-	- http://xdamman.com/website-optimization-grunt-uncss
-	- http://www.webfoobar.com/node/11
+- https://github.com/gruntjs/grunt-contrib-uglify
+- https://www.npmjs.com/package/grunt-processhtml
+- https://github.com/addyosmani/grunt-uncss
+- https://github.com/gruntjs/grunt-contrib-cssmin
+- https://github.com/gruntjs/grunt-contrib-imagemin
+- http://www.sitepoint.com/5-grunt-tasks-improve-performance-website/
+- http://xdamman.com/website-optimization-grunt-uncss
+- http://www.webfoobar.com/node/11
 
 General Resources used:
 1.Book: "Even Faster Web Sites" by Steve Souders. O'Reilly Media. 2009.
 2. Websites:
-	- https://www.igvita.com/2014/01/31/optimizing-web-font-rendering-performance/
-	- http://www.hongkiat.com/blog/optimize-google-webfonts/
+- https://www.igvita.com/2014/01/31/optimizing-web-font-rendering-performance/
+- http://www.hongkiat.com/blog/optimize-google-webfonts/
 
 ####Part 2: Optimize Frames per Second in pizza.html
 
