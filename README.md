@@ -21,6 +21,7 @@ Appart from this, asyncs were added for javascripts and a media="print", for the
 5. Optimized use of webfonts. Inlined the style for the font in the html file.
 
 Resources used for Grunt
+
 1. Team Treehouse Courses: "Up and Running With Grunt". http://teamtreehouse.com/.
 2. Book: "Mastering Grunt" by Daniel Li. Packt Publishing. 2014.
 3. Websites:
