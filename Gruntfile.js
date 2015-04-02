@@ -39,9 +39,26 @@ module.exports = function(grunt) {
         },
         files: [{
           expand: true,
-          cwd: '',
-          src: ['src/index.html','src/views/pizza.html'],
-          dest: 'dist/'
+          src: 'dist/index.html',
+          dest: ''
+        }]
+      },
+      dist2: {
+        options: {
+          collapseBooleanAttributes: true,
+          removeAttributeQuotes: true,
+          removeRedundantAttributes: true,
+          removeEmptyAttributes: true,
+          removeComments: true,
+          collapseWhitespace: true,
+          removeScriptTypeAttributes: true,
+          removeStyleLinkTypeAttributes: true,
+          minifyCSS: true
+        },
+        files: [{
+          expand: true,
+          src: 'dist/views/pizza.html',
+          dest: ''
         }]
       }
     },
