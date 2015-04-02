@@ -57,6 +57,7 @@ Other websites used:
 - http://ryanmorr.com/abstract-away-the-performance-faults-of-queryselectorall/
 
 Further optimization was done using grunt for:
+
 1. grunt-contrib-uglify (minify JS)
 2. grunt-contrib-uncss (remove unused css from bootstrap and styles)
 3. grunt-contrib-cssmin (minify css)
