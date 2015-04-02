@@ -62,7 +62,6 @@ module.exports = function(grunt) {
         }]
       }
     },
-
     uglify: {
       options: {
         mangle: false
@@ -132,17 +131,16 @@ module.exports = function(grunt) {
       }
     },
     uncss: {
-       dist: {
-          files: {
-             'dist/css/style.min.css': 'src/index.html'
-          }
-       },
-       dist2: {
-          files: {
-             'dist/views/css/combined.min.css': 'src/views/pizza.html'
-          }
-       }
-
+      dist: {
+        files: {
+          'dist/css/style.min.css': 'src/index.html'
+        }
+      },
+      dist2: {
+        files: {
+          'dist/views/css/combined.min.css': 'src/views/pizza.html'
+        }
+      }
     },
     processhtml: {
       options: {
