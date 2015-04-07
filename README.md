@@ -50,7 +50,7 @@ Instructions:
 ### Optimization Steps
 The steps are detailed in main.js. Basically unnecessary code was removed from the loops, and the loops where replaced with Duff’s Device patterns. More information about this patter is given in the main.js file. This was all from the book, "Even Faster Websites" by Steve Souders. Information in Pg. 97 of Chapter 7: Writing Efficient JavaScript.
 
-The optimizations where perfomed in changePizzaSizes() and updatePositions() functions. Reading through the discussion forums, it was confirmed that these had to be the ones changed.
+The optimizations where perfomed in changePizzaSizes() and updatePositions()functions. Reading through the discussion forums, it was confirmed that these had to be the ones changed. The function that generates the sliding pizzas was also modified to generate less than 200 pizzas.
 
 Other websites used:
 - http://www.nczonline.net/blog/2010/09/28/why-is-getelementsbytagname-faster-that-queryselectorall/
