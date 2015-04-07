@@ -59,7 +59,6 @@ Other websites used:
 Further optimization was done using grunt for:
 
 1. grunt-contrib-uglify (minify JS)
-2. grunt-contrib-uncss (remove unused css from bootstrap and styles)
-3. grunt-contrib-cssmin (minify css)
-4. grunt-contrib-imagemin (minify images)
-5. grunt-contrib-processhtml (automatically change file paths for .css and .js files)
+2. grunt-contrib-cssmin (minify css)
+3. grunt-contrib-imagemin (minify images)
+4. grunt-contrib-processhtml (automatically change file paths for .css and .js files)
