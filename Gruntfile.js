@@ -124,7 +124,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'dist/',
-          src: ['css/style.min.css','views/css/combined.min.css'],
+          src: ['css/style.min.css','views/css/style.css', 'views/css/bootstrap-grid.css'],
           dest: 'dist/',
           ext: '.css'
         }]
