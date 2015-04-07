@@ -135,11 +135,6 @@ module.exports = function(grunt) {
         files: {
           'dist/css/style.min.css': 'src/index.html'
         }
-      },
-      dist2: {
-        files: {
-          'dist/views/css/combined.min.css': 'src/views/pizza.html'
-        }
       }
     },
     processhtml: {

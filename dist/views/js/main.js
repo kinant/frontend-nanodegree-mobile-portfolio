@@ -596,16 +596,18 @@ function updatePositions() {
     } while (--leftover > 0);
   }
 
-  do {
-    process(items[i++], i);
-    process(items[i++], i);
-    process(items[i++], i);
-    process(items[i++], i);
-    process(items[i++], i);
-    process(items[i++], i);
-    process(items[i++], i);
-    process(items[i++], i);
-  } while (--iterations > 0);
+  if(iterations > 0){
+    do {
+      process(items[i++], i);
+      process(items[i++], i);
+      process(items[i++], i);
+      process(items[i++], i);
+      process(items[i++], i);
+      process(items[i++], i);
+      process(items[i++], i);
+      process(items[i++], i);
+    } while (--iterations > 0);
+  }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
@@ -622,9 +624,50 @@ window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
+
+  // get browser height and width functions from:
+  // http://stackoverflow.com/questions/1038727/how-to-get-browser-width-using-javascript-code
+  function getWidth() {
+    if (self.innerHeight) {
+      return self.innerWidth;
+    }
+
+    if (document.documentElement && document.documentElement.clientHeight) {
+      return document.documentElement.clientWidth;
+    }
+
+    if (document.body) {
+      return document.body.clientWidth;
+    }
+  }
+
+  function getHeight() {
+    if (self.innerHeight) {
+      return self.innerHeight;
+    }
+
+    if (document.documentElement && document.documentElement.clientHeight) {
+      return document.documentElement.clientHeight;
+    }
+
+    if (document.body) {
+      return document.body.clientHeight;
+    }
+  }
+
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+
+  // calculate total number of rows and columns of pizzas based
+  // on the browser height and width
+  cols = Math.ceil(getWidth()/s)
+  var rows = Math.ceil(getHeight()/s)
+
+  var total = cols * rows
+
+  // create the pizza image elements only for the total number of pizzas
+  // to display
+  for (var i = 0; i < total; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
